@@ -25,7 +25,40 @@ for x in range(1, 40):
     if f(x,3) and not f(x, 1):
         print(x)
 
-print("21)")
+print("21) ")
 for x in range(1, 40):
     if f(x,4) and not f(x, 2):
+        print(x)
+
+
+# 2 кучи или больше, 19 (если противник лошара)
+# any - у противника рассматриваем все случаи
+def f(x, y, s):
+    if x + y >= 259: return s % 2 == 0
+    if s == 0: return False
+    h = [f(x+1, y, s-1), f(x*2, y, s-1), f(x, y+1, s-1), f(x, y*2, s-1)]
+    if (s-1) %2 == 0: return any(h)
+    else: return any(h)
+
+print("19)")
+for x in range(1, 242):
+    if f(x,17, 2):
+        print(x)
+
+# 2 кучи или больше 20-21
+def f(x, y, s):
+    if x + y >= 259: return s % 2 == 0
+    if s == 0: return False
+    h = [f(x+1, y, s-1), f(x*2, y, s-1), f(x, y+1, s-1), f(x, y*2, s-1)]
+    if (s-1) %2 == 0: return any(h)
+    else: return all(h)
+
+print("20)")
+for x in range(1, 242):
+    if f(x,17, 3) and not f(x, 17, 1):
+        print(x)
+
+print("21)")
+for x in range(1, 242):
+    if f(x,17, 4) and not f(x, 17, 2):
         print(x)
